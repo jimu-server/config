@@ -52,6 +52,14 @@ type Configuration struct {
 			User     string
 			Password string
 		}
+		Pay struct {
+			AliPay struct {
+				AppId           string
+				AppPublicCert   string
+				AliPayPublicKey string
+				AliPayRootKey   string
+			}
+		}
 	}
 }
 
