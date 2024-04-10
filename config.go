@@ -46,6 +46,12 @@ type Configuration struct {
 			SecretAccessKey string
 			Secure          bool
 		}
+		Tencent struct {
+			BucketURL  string
+			ServiceURL string
+			SecretID   string
+			SecretKey  string
+		}
 		RabbitMQ struct {
 			Host     string
 			Port     int
