@@ -66,6 +66,12 @@ type Configuration struct {
 				AliPayRootKey   string
 			}
 		}
+		Email struct {
+			Host     string
+			Port     int
+			User     string
+			Password string
+		}
 	}
 }
 
