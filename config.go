@@ -1,6 +1,8 @@
 package config
 
 import (
+	"bytes"
+	_ "embed"
 	"github.com/spf13/viper"
 )
 
@@ -26,19 +28,8 @@ type Configuration struct {
 			DB       int
 		}
 		Key    string
-		OpenIm struct {
-			Secret string
-			Admin  string
-			Init   struct {
-				PlatformID           int32
-				ApiAddr              string
-				WsAddr               string
-				DataDir              string
-				LogLevel             uint32
-				IsLogStandardOutput  bool
-				LogFilePath          string
-				IsExternalExtensions bool
-			}
+		Ollama struct {
+			Port string
 		}
 		Minio struct {
 			Endpoint        string
@@ -79,6 +70,11 @@ func init() {
 	environment()
 }
 
+// 用于打包需要读取的配置文件
+//
+//go:embed  config.yml
+var data []byte
+
 // Environment
 // description: 加载配置
 func environment() {
@@ -87,7 +83,9 @@ func environment() {
 	viper.AddConfigPath("./")
 	viper.AutomaticEnv()
 	if err := viper.ReadInConfig(); err != nil {
-		panic(err)
+		if err = viper.ReadConfig(bytes.NewBuffer(data)); err != nil {
+			panic(err)
+		}
 	}
 	if err := viper.Unmarshal(Evn); err != nil {
 		panic(err)
