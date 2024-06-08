@@ -21,6 +21,7 @@ type Configuration struct {
 			MaxAge     int
 		}
 		Database string
+		FileDb   string
 		Redis    struct {
 			Host     string
 			Port     int
