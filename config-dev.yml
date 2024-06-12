@@ -1,0 +1,49 @@
+app:
+  number: 1
+  # http 端口配置
+  port: :8080
+  logger:
+    # 日志级别
+    level: debug
+    # 日志输出路径
+    filename: system.log
+    maxsize: 100
+    maxbackups: 10
+    maxage: 30
+  # 数据库连接协议
+  database: host=localhost user=postgres password=Awen*0802^ dbname=postgres port=5432 sslmode=disable TimeZone=Asia/Shanghai
+  fileDb: gpt.db
+  # redis
+  redis:
+    host: localhost
+    port: 6379
+    password:
+    db: 0
+  key: gim
+  email:
+    user: jimuos@163.com
+    host: smtp.163.com
+    port: 465
+    password: OFLSPAKBOEACDAAM
+  # 本地提供 ollama 服务的配置 一般运行在用户本地
+  ollama:
+    port: 11435
+  ## 腾讯云对象存储配置
+  tencent:
+    BucketURL: https://jimuos-1252940994.cos.ap-nanjing.myqcloud.com
+    ServiceURL: https://cos.ap-nanjing.myqcloud.com
+    SecretID: AKIDUr1wfBVbT6VfaIl03sSnwsa4LOCl5B1c
+    SecretKey: PZUAbmiPs53mFTSBi26vVqwmNjqiLiqj
+
+  rabbitMQ:
+    host: localhost
+    port: 5672
+    user: guest
+    password: guest
+  pay:
+    alipay:
+      appID: 9021000135694366
+      appPublicCert: ca/appPublicCert.crt
+      alipayPublicKey: ca/alipayPublicCert.crt
+      alipayRootKey: ca/alipayRootCert.crt
+
