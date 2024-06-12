@@ -75,8 +75,14 @@ func init() {
 
 // 用于打包需要读取的配置文件
 //
-//go:embed  config.yml
-var data []byte
+//go:embed  config-dev.yml
+var dev []byte
+
+//go:embed  config-dev.yml
+var product []byte
+
+//go:embed  config-dev.yml
+var test []byte
 
 // Environment
 // description: 加载配置
@@ -94,7 +100,15 @@ func environment() {
 	viper.AddConfigPath("./")
 	viper.AutomaticEnv()
 	if err := viper.ReadInConfig(); err != nil {
-		if err = viper.ReadConfig(bytes.NewBuffer(data)); err != nil {
+		switch *active {
+		case "dev":
+			err = viper.ReadConfig(bytes.NewBuffer(dev))
+		case "product":
+			err = viper.ReadConfig(bytes.NewBuffer(product))
+		case "test":
+			err = viper.ReadConfig(bytes.NewBuffer(test))
+		}
+		if err != nil {
 			panic(err)
 		}
 	}
