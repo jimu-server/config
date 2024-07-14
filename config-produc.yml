@@ -11,11 +11,11 @@ app:
     maxbackups: 10
     maxage: 30
   # 数据库连接协议
-  database: host=localhost user=postgres password=Awen*0802^ dbname=postgres port=5432 sslmode=disable TimeZone=Asia/Shanghai
+  database: host=82.157.160.117 user=postgres password=postgres dbname=postgres port=5432 sslmode=disable TimeZone=Asia/Shanghai
   fileDb: gpt.db
   # redis
   redis:
-    host: localhost
+    host: 82.157.160.117
     port: 6379
     password:
     db: 0
@@ -36,7 +36,7 @@ app:
     SecretKey: PZUAbmiPs53mFTSBi26vVqwmNjqiLiqj
 
   rabbitMQ:
-    host: localhost
+    host: 82.157.160.117
     port: 5672
     user: guest
     password: guest
